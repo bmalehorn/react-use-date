@@ -1,9 +1,12 @@
 {
   "name": "react-use-date",
   "version": "0.2.0",
-  "private": false,
-  "license": "MIT",
   "description": "React hook to get current date, updating automatically",
+  "repository": {
+    "url": "https://github.com/bmalehorn/react-use-date"
+  },
+  "author": "Brian Malehorn",
+  "license": "MIT",
   "keywords": [
     "react",
     "hook",
@@ -11,7 +14,6 @@
     "date",
     "time"
   ],
-  "author": "Brian Malehorn",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
   "dependencies": {},
@@ -89,7 +91,7 @@
     "start": "node scripts/start.js",
     "build": "tsc",
     "test": "node scripts/test.js",
-    "format": "prettier --write \"src/**/*.ts*\" \"src/**/*.js*\"",
+    "format": "prettier --write \"src/**/*.ts*\" \"src/**/*.js*\" \"*.md\" \"*.json\"",
     "lint": "tslint -p tsconfig.json",
     "prepare": "yarn build",
     "prepublishOnly": "yarn lint",

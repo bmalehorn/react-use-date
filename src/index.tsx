@@ -1,13 +1,6 @@
 import { useEffect, useState } from "react";
 
-export type Interval =
-  | "second"
-  | "minute"
-  | "hour"
-  | "day"
-  | number
-  | undefined
-  | null;
+export type Interval = "second" | "minute" | "hour" | number | undefined | null;
 
 const useDate = ({ interval }: { interval?: Interval } = {}) => {
   const [date, setDate] = useState(new Date());
@@ -45,14 +38,6 @@ export const nextCallback = (now: Date, interval?: Interval) => {
       now.getMilliseconds() -
       now.getSeconds() * 1000 -
       now.getMinutes() * 60 * 1000
-    );
-  } else if (interval === "day") {
-    return (
-      24 * 60 * 60 * 1000 -
-      now.getMilliseconds() -
-      now.getSeconds() * 1000 -
-      now.getMinutes() * 60 * 1000 -
-      now.getHours() * 60 * 60 * 1000
     );
   } else {
     return 1000 - now.getMilliseconds();
