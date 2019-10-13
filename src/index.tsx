@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 
 export type Interval =
-  | "millisecond"
   | "second"
   | "minute"
   | "hour"
@@ -10,11 +9,32 @@ export type Interval =
   | undefined
   | null;
 
+const useDate = ({ interval }: { interval?: Interval } = {}) => {
+  const [date, setDate] = useState(new Date());
+
+  useEffect(() => {
+    let intervalId: NodeJS.Timeout | undefined;
+
+    const updateTimeout = () => {
+      intervalId = setTimeout(() => {
+        setDate(new Date());
+        updateTimeout();
+      }, nextCallback(new Date(), interval));
+    };
+
+    updateTimeout();
+
+    return () => intervalId && clearInterval(intervalId);
+  });
+
+  return date;
+};
+
+export default useDate;
+
 export const nextCallback = (now: Date, interval?: Interval) => {
   if (typeof interval === "number") {
     return interval;
-  } else if (interval === "millisecond") {
-    return 1;
   } else if (interval === "second") {
     return 1000 - now.getMilliseconds();
   } else if (interval === "minute") {
@@ -38,26 +58,3 @@ export const nextCallback = (now: Date, interval?: Interval) => {
     return 1000 - now.getMilliseconds();
   }
 };
-
-const useDate = ({ interval }: { interval?: Interval } = {}) => {
-  const [date, setDate] = useState(new Date());
-
-  useEffect(() => {
-    let intervalId: undefined | NodeJS.Timeout = undefined;
-
-    const updateTimeout = () => {
-      intervalId = setTimeout(() => {
-        setDate(new Date());
-        updateTimeout();
-      }, nextCallback(new Date(), interval));
-    };
-
-    updateTimeout();
-
-    return () => intervalId && clearInterval(intervalId);
-  });
-
-  return date;
-};
-
-export default useDate;
