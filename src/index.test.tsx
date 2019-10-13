@@ -39,7 +39,7 @@ describe("nextCallback", () => {
 
   it("defaults to 'second'", () => {
     milliseconds = 300;
-    const interval = nextCallback(createDate());
+    const interval = nextCallback(createDate(), undefined);
     expect(interval).toEqual(700);
   });
 

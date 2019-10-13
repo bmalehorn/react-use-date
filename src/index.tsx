@@ -8,14 +8,14 @@ const useDate = ({ interval }: { interval?: Interval } = {}) => {
   useEffect(() => {
     let intervalId: NodeJS.Timeout | undefined;
 
-    const updateTimeout = () => {
+    const bump = () => {
       intervalId = setTimeout(() => {
         setDate(new Date());
-        updateTimeout();
+        bump();
       }, nextCallback(new Date(), interval));
     };
 
-    updateTimeout();
+    bump();
 
     return () => intervalId && clearInterval(intervalId);
   });
@@ -25,7 +25,7 @@ const useDate = ({ interval }: { interval?: Interval } = {}) => {
 
 export default useDate;
 
-export const nextCallback = (now: Date, interval?: Interval) => {
+export const nextCallback = (now: Date, interval: Interval) => {
   if (typeof interval === "number") {
     return interval;
   } else if (interval === "second") {
