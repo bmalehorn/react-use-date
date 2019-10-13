@@ -1,7 +1,7 @@
 {
   "name": "react-use-date",
   "version": "0.1.0",
-  "private": true,
+  "private": false,
   "license": "MIT",
   "description": "React hook to get current date, updating automatically",
   "keywords": [
