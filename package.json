@@ -1,6 +1,6 @@
 {
   "name": "react-use-date",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "private": false,
   "license": "MIT",
   "description": "React hook to get current date, updating automatically",
@@ -14,7 +14,12 @@
   "author": "Brian Malehorn",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
-  "dependencies": {
+  "dependencies": {},
+  "peerDependencies": {
+    "react": "^16.0.0",
+    "react-dom": "^16.0.0"
+  },
+  "devDependencies": {
     "@babel/core": "7.6.0",
     "@svgr/webpack": "4.3.2",
     "@typescript-eslint/eslint-plugin": "^2.2.0",
@@ -67,13 +72,7 @@
     "webpack": "4.41.0",
     "webpack-dev-server": "3.2.1",
     "webpack-manifest-plugin": "2.1.1",
-    "workbox-webpack-plugin": "4.3.1"
-  },
-  "peerDependencies": {
-    "react": "^16.0.0",
-    "react-dom": "^16.0.0"
-  },
-  "devDependencies": {
+    "workbox-webpack-plugin": "4.3.1",
     "@types/jest": "24.0.18",
     "@types/node": "12.7.12",
     "@types/react": "16.9.5",
@@ -93,7 +92,7 @@
     "format": "prettier --write \"src/**/*.ts*\" \"src/**/*.js*\"",
     "lint": "tslint -p tsconfig.json",
     "prepare": "yarn build",
-    "prepublishOnly": "yarn test && yarn lint",
+    "prepublishOnly": "yarn lint",
     "preversion": "yarn lint"
   },
   "files": [
