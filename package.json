@@ -1,6 +1,6 @@
 {
   "name": "react-use-date",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "React hook to get current date, updating automatically",
   "repository": {
     "url": "https://github.com/bmalehorn/react-use-date"
