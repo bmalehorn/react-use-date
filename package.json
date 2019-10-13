@@ -42,7 +42,7 @@
     "lint": "tslint -p tsconfig.json",
     "prepare": "yarn build",
     "prepublishOnly": "yarn test && yarn lint",
-    "preversion": "npm run lint"
+    "preversion": "yarn lint"
   },
   "files": [
     "lib/**/*"
