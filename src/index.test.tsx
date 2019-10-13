@@ -43,7 +43,7 @@ describe("nextCallback", () => {
     expect(interval).toEqual(700);
   });
 
-  it("advances to the next day", () => {
+  it("advances to the next hour", () => {
     year = 2000;
     month = 1;
     day = 2;
@@ -57,13 +57,13 @@ describe("nextCallback", () => {
     // but the one you get out is 1-based
     const dayBefore = date.getDay();
 
-    const interval = nextCallback(date, "day");
+    const interval = nextCallback(date, "hour");
     const newDate = new Date(date.getTime() + interval);
 
     expect(newDate.getFullYear()).toEqual(2000);
     expect(newDate.getMonth()).toEqual(1);
-    expect(newDate.getDay()).toEqual(dayBefore + 1);
-    expect(newDate.getHours()).toEqual(0);
+    expect(newDate.getDay()).toEqual(dayBefore);
+    expect(newDate.getHours()).toEqual(4);
     expect(newDate.getMinutes()).toEqual(0);
     expect(newDate.getSeconds()).toEqual(0);
     expect(newDate.getMilliseconds()).toEqual(0);
