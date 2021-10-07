@@ -6,10 +6,10 @@ const useDate = ({ interval }: { interval?: Interval } = {}) => {
   const [date, setDate] = useState(new Date());
 
   useEffect(() => {
-    let intervalId: NodeJS.Timeout | undefined;
+    let timeoutId: NodeJS.Timeout | undefined;
 
     const bump = () => {
-      intervalId = setTimeout(() => {
+      timeoutId = setTimeout(() => {
         setDate(new Date());
         bump();
       }, nextCallback(new Date(), interval));
@@ -17,7 +17,7 @@ const useDate = ({ interval }: { interval?: Interval } = {}) => {
 
     bump();
 
-    return () => intervalId && clearInterval(intervalId);
+    return () => clearTimeout(timeoutId!);
   });
 
   return date;
